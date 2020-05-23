@@ -1,0 +1,118 @@
+WindowManager:
+    MainWindow:
+    Amplitude:
+    Resistor:
+    FM:
+    Diode:
+
+
+<MainWindow>:
+    name: "main"
+
+    GridLayout:
+        cols:1
+
+
+
+        GridLayout:
+            cols: 2
+            Image:
+                source: 'title.jpeg'
+            Image:
+                source: 'logo.png'
+            Label:
+                text: "Solid State Devices"
+            Label:
+                text: "Wave Modulation"
+            Button:
+                text: "Resistor"
+                on_release:
+                    app.root.current = "Resistor"
+                    root.manager.transition.direction = "left"
+            Button:
+                text: "Amplitude"
+                on_release:
+                    app.root.current = "Amplitude"
+                    root.manager.transition.direction = "left"
+            Button:
+                text: "Diode"
+                on_release:
+                    app.root.current = "Diode"
+                    root.manager.transition.direction = "left"
+            Button:
+                text: "FM"
+                on_release:
+                    app.root.current = "FM"
+                    root.manager.transition.direction = "left"
+
+
+
+<Resistor>:
+    name: "Resistor"
+
+    Button:
+        text: "Go Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+<Amplitude>:
+    name: "Amplitude"
+    caramp: caramp
+    carfr: carfr
+    mesamp: mesamp
+    mesfr: mesfr
+    mod: mod
+    GridLayout:
+        cols: 2
+        Label:
+            text: "carrier amplitude: "
+
+        TextInput:
+            id: caramp
+            multiline: False
+        Label:
+            text: "carrier frquency: "
+
+        TextInput:
+            id: carfr
+            multiline: False
+        Label:
+            text: "message amplitude: "
+
+        TextInput:
+            id: mesamp
+            multiline: False
+        Label:
+            text: "message frquency: "
+
+        TextInput:
+            id: mesfr
+            multiline: False
+        Label:
+            text: "modulation index: "
+
+        TextInput:
+            id: mod
+            multiline: False
+        Button:
+            text: "Plot Characteristics"
+            on_release: root.btn()
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+<FM>:
+    name: "FM"
+    Label:
+        text: "Success "
+
+<Diode>:
+    name: "Diode"
+
+    Button:
+        text: "Go Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
