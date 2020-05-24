@@ -63,11 +63,94 @@ class Amplitude(Screen):
 
 
 class Resistor(Screen):
-    pass
+    len = ObjectProperty(None)
+    area = ObjectProperty(None)
+    res = ObjectProperty(None)
+
+    def btn(self):
+        l = float(self.len.text)
+        a = float(self.area.text)
+        r = float(self.res.text)
+        R = (r*l)/a
+        x = np.linspace(0, 1, 1000)
+        y = R*x
+        plt.plot(x, y)
+
+        # naming the x axis
+        plt.xlabel('I in Amp')
+        # naming the y axis
+        plt.ylabel('V in Volts')
+
+        # giving a title to my graph
+        plt.title('V-I graph at Resistance =' + str(R))
+
+        # function to show the plot
+        plt.show()
+
+
+
+
+
 class FM(Screen):
-    pass
+    mesf = ObjectProperty(None)
+    carf = ObjectProperty(None)
+    mod = ObjectProperty(None)
+
+    def btn(self):
+        modulator_frequency = float(self.mesf.text)
+        carrier_frequency = float(self.carf.text)
+        modulation_index = float(self.mod.text)
+
+        time = np.arange(44100.0) / 44100.0
+        modulator = np.sin(2.0 * np.pi * modulator_frequency * time) * modulation_index
+        carrier = np.sin(2.0 * np.pi * carrier_frequency * time)
+        product = np.zeros_like(modulator)
+
+        for i, t in enumerate(time):
+            product[i] = np.sin(2. * np.pi * (carrier_frequency * t + modulator[i]))
+
+        plt.subplot(3, 1, 1)
+        plt.title('Frequency Modulation')
+        plt.plot(modulator)
+        plt.ylabel('Amplitude')
+        plt.xlabel('Modulator signal')
+        plt.subplot(3, 1, 2)
+        plt.plot(carrier)
+        plt.ylabel('Amplitude')
+        plt.xlabel('Carrier signal')
+        plt.subplot(3, 1, 3)
+        plt.plot(product)
+        plt.ylabel('Amplitude')
+        plt.xlabel('Output signal')
+        plt.show()
+
+
+
 class Diode(Screen):
-    pass
+    revi = ObjectProperty(None)
+    emsc = ObjectProperty(None)
+    temp = ObjectProperty(None)
+
+    def btn(self):
+        i = float(self.revi.text)
+        n = float(self.emsc.text)
+        t = float(self.temp.text)
+        x = np.linspace(0, 1, 100)
+
+        y = (i*(np.exp(x*10000*1.15/n/t) - 1))/1000000000
+        plt.plot(x, y)
+
+        # naming the x axis
+        plt.xlabel('Voltage applied across diode')
+        # naming the y axis
+        plt.ylabel('Diode Current in mA')
+
+        # giving a title to my graph
+        plt.title('I-V characteristics of Diode')
+
+        # function to show the plot
+        plt.show()
+
 
 
 class WindowManager(ScreenManager):

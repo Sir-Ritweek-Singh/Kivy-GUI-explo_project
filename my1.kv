@@ -49,12 +49,41 @@ WindowManager:
 
 <Resistor>:
     name: "Resistor"
+    len: len
+    area: area
+    res: res
 
-    Button:
-        text: "Go Back"
-        on_release:
-            app.root.current = "main"
-            root.manager.transition.direction = "right"
+    GridLayout:
+        cols: 2
+        Label:
+            text: "Length in m: "
+
+        TextInput:
+            id: len
+            multiline: False
+        Label:
+            text: "Crossectional area in m^2: "
+
+        TextInput:
+            id: area
+            multiline: False
+        Label:
+            text: "resistivity: in Ohm/m "
+
+        TextInput:
+            id: res
+            multiline: False
+        Button:
+            text: "Plot I-V graph"
+            on_release: root.btn()
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+
 <Amplitude>:
     name: "Amplitude"
     caramp: caramp
@@ -105,14 +134,80 @@ WindowManager:
                 root.manager.transition.direction = "right"
 <FM>:
     name: "FM"
-    Label:
-        text: "Success "
+    mesf: mesf
+    carf: carf
+    mod: mod
+
+    GridLayout:
+        cols: 2
+        Label:
+            text: "Message Frequency "
+
+        TextInput:
+            id: mesf
+            multiline: False
+        Label:
+            text: "Carrier Frequency "
+
+        TextInput:
+            id: carf
+            multiline: False
+        Label:
+            text: "Modulation Index"
+
+        TextInput:
+            id: mod
+            multiline: False
+        Button:
+            text: "Plot Characteristics"
+            on_release: root.btn()
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
 
 <Diode>:
     name: "Diode"
+    revi: revi
+    emsc: emsc
+    temp: temp
 
-    Button:
-        text: "Go Back"
-        on_release:
-            app.root.current = "main"
-            root.manager.transition.direction = "right"
+    GridLayout:
+        cols: 2
+        Label:
+            text: "Saturation Current in Pico-Amp"
+
+        TextInput:
+            id: revi
+            multiline: False
+        Label:
+            text: "emission Coefficient "
+
+        TextInput:
+            id: emsc
+            multiline: False
+        Label:
+            text: "Junction Temprature in K"
+
+        TextInput:
+            id: temp
+            multiline: False
+        Label:
+            text: "Boltzmann constant  1.38064852 × 10^-23 J/k"
+
+
+        Label:
+            text: "Charge of Electron taken to be -1.602 x 10^-19 C"
+
+
+        Button:
+            text: "Plot Characteristics"
+            on_release: root.btn()
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
