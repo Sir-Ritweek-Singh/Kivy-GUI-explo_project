@@ -22,25 +22,31 @@ WindowManager:
                 source: 'logo.png'
             Label:
                 text: "Solid State Devices"
+                font_size:'30sp'
             Label:
                 text: "Wave Modulation"
+                font_size:'30sp'
             Button:
                 text: "Resistor"
+                font_size:'30sp'
                 on_release:
                     app.root.current = "Resistor"
                     root.manager.transition.direction = "left"
             Button:
                 text: "Amplitude"
+                font_size:'30sp'
                 on_release:
                     app.root.current = "Amplitude"
                     root.manager.transition.direction = "left"
             Button:
                 text: "Diode"
+                font_size:'30sp'
                 on_release:
                     app.root.current = "Diode"
                     root.manager.transition.direction = "left"
             Button:
                 text: "FM"
+                font_size:'30sp'
                 on_release:
                     app.root.current = "FM"
                     root.manager.transition.direction = "left"
@@ -62,13 +68,13 @@ WindowManager:
             id: len
             multiline: False
         Label:
-            text: "Crossectional area in m^2: "
+            text: "Crossectional area in mm^2: "
 
         TextInput:
             id: area
             multiline: False
         Label:
-            text: "resistivity: in Ohm/m "
+            text: "resistivity: in Ohm/m (in 10^-6) "
 
         TextInput:
             id: res
@@ -100,7 +106,7 @@ WindowManager:
             id: caramp
             multiline: False
         Label:
-            text: "carrier frquency: "
+            text: "carrier frequency: "
 
         TextInput:
             id: carfr
@@ -112,7 +118,7 @@ WindowManager:
             id: mesamp
             multiline: False
         Label:
-            text: "message frquency: "
+            text: "message frequency: "
 
         TextInput:
             id: mesfr
@@ -182,6 +188,7 @@ WindowManager:
         TextInput:
             id: revi
             multiline: False
+
         Label:
             text: "emission Coefficient "
 
